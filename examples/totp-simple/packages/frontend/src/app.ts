@@ -8,10 +8,13 @@ const main = () => {
   const result = document.getElementById("result")
 
   axios
-    .post<{ otpauthUrl: string }>("http://localhost:58000/totp/secret-key")
+    .post<{ otpauthUrl: string }>("http://localhost:58000/totp/secret-key/")
     .then(async (result) => {
       const { otpauthUrl } = result.data
       await toDataURL(qrcode, otpauthUrl)
+    })
+    .catch((error) => {
+      console.log(error)
     })
 
   submitButton.addEventListener("click", async () => {

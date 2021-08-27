@@ -9,7 +9,7 @@ router.post("/secret-key", async (req, res) => {
       "00000000-0000-0000-0000-000000000001"
     )
     console.log(secrets)
-    res.send({ secrets })
+    return res.status(200).json(secrets)
   } catch (error) {
     console.log(error)
     res.status(401).send({ message: "internal server error" })
